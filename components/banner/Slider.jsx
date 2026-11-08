@@ -166,8 +166,8 @@ export default function BannerSlider({ surface = "bg-sage" }) {
           : slide.headline}
       </p>
 
-      <SectionShell className="relative grid min-h-[36rem] items-center gap-8 pb-12 pt-24 sm:gap-10 sm:pb-14 sm:pt-28 lg:min-h-[40rem] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8 lg:pb-16 lg:pt-32">
-        <div className="min-w-0">
+      <SectionShell className="hero-layout relative">
+        <div className="hero-copy-col min-w-0">
           <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.div
               key={current}
@@ -185,18 +185,18 @@ export default function BannerSlider({ surface = "bg-sage" }) {
                 {slide.tag}
               </span>
 
-              <h1 className="mt-5 max-w-xl text-[1.85rem] font-extrabold leading-[1.12] tracking-tight text-ink-900 sm:text-[2.35rem] lg:text-[2.85rem]">
+              <h1 className="hero-title mt-4 max-w-xl text-ink-900 sm:mt-5">
                 {slide.headline}{" "}
                 {slide.accent ? (
                   <span className="hero-accent-clip">{slide.accent}</span>
                 ) : null}
               </h1>
 
-              <p className="mt-4 max-w-md text-base leading-relaxed text-ink-500 sm:text-[1.0625rem]">
+              <p className="hero-lead">
                 {slide.description}
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-3">
+              <div className="hero-actions">
                 {isError && (
                   <button type="button" className="btn btn-primary" onClick={() => refetch()}>
                     Retry
@@ -216,14 +216,14 @@ export default function BannerSlider({ surface = "bg-sage" }) {
                 )}
               </div>
 
-              <div className="mt-6">
+              <div className="hero-trust">
                 <TrustRow />
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="relative mx-auto w-full min-w-0 max-w-xl lg:row-span-2 lg:mt-0 lg:max-w-none">
+        <div className="hero-visual relative mx-auto w-full min-w-0 max-w-xl lg:row-span-2 lg:max-w-none">
           <HeroVisual
             theme={theme}
             direction={direction}
@@ -234,7 +234,7 @@ export default function BannerSlider({ surface = "bg-sage" }) {
 
         {count > 1 && (
           <div
-            className="flex items-center gap-3"
+            className="hero-controls"
             onMouseEnter={() => setControlsHover(true)}
             onMouseLeave={() => setControlsHover(false)}
           >
@@ -246,7 +246,7 @@ export default function BannerSlider({ surface = "bg-sage" }) {
             >
               <IconArrowLeft size={18} stroke={1.75} />
             </button>
-            <div className="flex items-center gap-1 rounded-full border border-line bg-surface px-2.5 py-1.5">
+            <div className="hero-dots">
               {slides.map((item, i) => (
                 <button
                   key={item.id || i}
@@ -254,11 +254,11 @@ export default function BannerSlider({ surface = "bg-sage" }) {
                   onClick={() => goTo(i, i > current ? 1 : -1, true)}
                   aria-label={`Go to slide ${i + 1}: ${item.tag || item.headline}`}
                   aria-current={i === current ? "true" : undefined}
-                  className="flex h-11 min-w-11 items-center justify-center"
+                  className="hero-dot"
                 >
                   <span
-                    className={`block h-1.5 rounded-full transition-all duration-300 ${
-                      i === current ? "w-7 bg-accent" : "w-2 bg-line hover:bg-ink-400"
+                    className={`hero-dot-bar ${
+                      i === current ? "is-active bg-accent" : "bg-line hover:bg-ink-400"
                     }`}
                   />
                 </button>

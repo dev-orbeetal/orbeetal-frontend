@@ -11,7 +11,7 @@ const ART = {
 
 export function HeroScene({
   theme,
-  className = "relative mx-auto h-[374px] w-full sm:h-[462px] lg:h-[550px]",
+  className = "hero-scene",
 }) {
   const [light, dark] = ART[theme?.id] || ART.web;
 
