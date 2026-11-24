@@ -16,7 +16,7 @@ export default function DepartmentGrid({
   const { grid, featured } = splitDepartments(departments);
 
   return (
-    <div className="relative z-[1] mx-auto max-w-6xl">
+    <div className="relative z-[1]">
       <div className="dept-grid section-stack">
         {grid.length > 0 && (
           <div className="dept-grid__row">

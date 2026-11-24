@@ -8,7 +8,6 @@ import { fadeUp, stagger, viewportOnce } from "@/components/ui/motion";
 import { useGetPublishedHomepageQuery } from "@/redux/features/cms/homepageApi";
 import SectionShell from "@/components/layouts/SectionShell";
 import { resolveMethodSteps } from "./methodSteps";
-import { CardWatermark } from "@/components/illustrations";
 
 function MethodStep({ step, index, reduce }) {
   const Icon = step.Icon;
@@ -68,7 +67,6 @@ function MethodStep({ step, index, reduce }) {
           if (event.pointerType === "mouse") setOpen(false);
         }}
       >
-        <CardWatermark topic={step} tone={index % 2 === 0 ? "cyan" : "navy"} size="sm" />
         <div className="method-card__head">
           <span className="dept-icon dept-icon--cyan">
             <Icon size={18} strokeWidth={2.15} />

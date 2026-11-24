@@ -2,7 +2,6 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
-import { CardWatermark } from "@/components/illustrations";
 
 function ClampedDescription({ text, onMore }) {
   const clampRef = useRef(null);
@@ -35,7 +34,7 @@ function ClampedDescription({ text, onMore }) {
         {text}
       </p>
       {overflows ? (
-        <button type="button" onClick={onMore} className="mt-2 text-sm font-bold text-accent">
+        <button type="button" onClick={onMore} className="mt-2 text-sm font-bold text-accent-ink transition-colors hover:text-cyan-ink">
           See more
         </button>
       ) : null}
@@ -97,13 +96,11 @@ export default function ShowcaseWorkCard({
   external = false,
   linkLabel,
   onMore,
-  topic = title,
 }) {
   return (
     <article className="showcase-carousel-card h-full min-h-[var(--showcase-card-height)]">
       <div className="showcase-media showcase-media--cover shrink-0">{image}</div>
       <div className="relative flex flex-1 flex-col overflow-hidden px-5 pb-5">
-        <CardWatermark topic={topic} tone="cyan" size="md" />
         <h3 className="relative line-clamp-2 text-lg font-bold">{title}</h3>
         <ClampedDescription text={description} onMore={onMore} />
         <div className="relative mt-auto pt-3">
@@ -124,7 +121,7 @@ export default function ShowcaseWorkCard({
             href={href}
             target={external ? "_blank" : undefined}
             rel={external ? "noreferrer" : undefined}
-            className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent"
+            className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent-ink transition-colors hover:text-cyan-ink"
           >
             {linkLabel}
             <ArrowUpRight size={14} />

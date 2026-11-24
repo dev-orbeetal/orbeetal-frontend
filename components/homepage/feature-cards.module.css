@@ -1,0 +1,156 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 210px;
+  border: 1px solid #cbdfea;
+  border-radius: 25px;
+  background: linear-gradient(120deg, #fff 30%, #edf7fa);
+  padding: 22px 18px 8px;
+  text-align: center;
+  transition: box-shadow 0.35s, border-color 0.35s, transform 0.35s;
+}
+.card:hover {
+  border-color: #91cf44;
+  box-shadow: 0 14px 35px #15354b14;
+  transform: translateY(-3px);
+}
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+.title {
+  margin: 0 0 6px;
+  color: #15354b;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  text-align: center;
+}
+.text {
+  max-width: 16rem;
+  margin: 0 auto;
+  color: #58778b;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+.art {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: min(100%, 220px);
+  height: auto;
+  margin: 4px auto 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.flow {
+  stroke-dasharray: 4 10;
+  animation: flow 1.8s linear infinite;
+}
+.orbit {
+  transform-origin: 120px 100px;
+  animation: spin 18s linear infinite;
+}
+.pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 3s ease-in-out infinite;
+}
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+.scan {
+  animation: scan 3.8s ease-in-out infinite;
+}
+.check {
+  stroke-dasharray: 65;
+  animation: check 5s ease-in-out infinite;
+}
+.bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: grow 5s ease-in-out infinite;
+}
+.trend {
+  stroke-dasharray: 200;
+  animation: trend 5s ease-in-out infinite;
+}
+.ripple {
+  transform-origin: 120px 100px;
+  animation: ripple 3s ease-out infinite;
+}
+.delay {
+  animation-delay: -1.5s;
+}
+@keyframes flow {
+  to { stroke-dashoffset: -28; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  50% { opacity: 0.55; transform: scale(0.92); }
+}
+@keyframes float {
+  50% { transform: translateY(-7px); }
+}
+@keyframes scan {
+  0%, 100% { transform: translateY(-40px); opacity: 0; }
+  15%, 75% { opacity: 1; }
+  90% { transform: translateY(80px); opacity: 0; }
+}
+@keyframes check {
+  0%, 15% { stroke-dashoffset: 65; }
+  45%, 90% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 65; }
+}
+@keyframes grow {
+  0%, 100% { transform: scaleY(0.35); }
+  45%, 85% { transform: scaleY(1); }
+}
+@keyframes trend {
+  0%, 10% { stroke-dashoffset: 200; }
+  65%, 90% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 200; }
+}
+@keyframes ripple {
+  0% { transform: scale(0.5); opacity: 0.7; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow,
+  .orbit,
+  .pulse,
+  .float,
+  .scan,
+  .check,
+  .bar,
+  .trend,
+  .ripple,
+  .card {
+    animation: none;
+    transition: none;
+  }
+  .check,
+  .trend {
+    stroke-dashoffset: 0;
+  }
+}
+:global(html.dark) .card {
+  border-color: #2a5168;
+  background: linear-gradient(120deg, #163044 30%, #12344d);
+}
+:global(html.dark) .title {
+  color: #f4fbfe;
+}
+:global(html.dark) .text {
+  color: #9ec4d6;
+}

@@ -8,7 +8,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { EASE, fadeRight, scaleIn, stagger, viewportOnce } from "@/components/ui/motion";
 import { useGetPublishedHomepageQuery } from "@/redux/features/cms/homepageApi";
 import SectionShell from "@/components/layouts/SectionShell";
-import { CardWatermark } from "@/components/illustrations";
 
 function WhyCompanyArt() {
   const ref = useRef(null);
@@ -117,7 +116,6 @@ function FeatureRow({ service, index, started }) {
       transition={{ duration: 0.22, ease: EASE }}
       className="card group flex items-start gap-3.5 p-4 transition-colors duration-200 hover:border-cyan/50 hover:bg-accent-light/50"
     >
-      <CardWatermark topic={service} tone="cyan" size="sm" />
       <span className="icon-well transition-colors duration-200 group-hover:bg-accent-light">
         {service.icon ? (
           <Image

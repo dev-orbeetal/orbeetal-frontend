@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Sparkles, ShieldCheck, Rocket, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { fadeUp, stagger, viewportOnce } from "@/components/ui/motion";
 import { useGetPublishedHomepageQuery } from "@/redux/features/cms/homepageApi";
 import SectionShell from "@/components/layouts/SectionShell";
-import { CardWatermark } from "@/components/illustrations";
 import MilestoneScene from "@/components/homepage/MilestoneScene";
-
-const HIGHLIGHT_ICONS = [Sparkles, ShieldCheck, Rocket];
+import FeatureCardArt, { featureKind, featureStyles } from "@/components/homepage/FeatureCardArt";
 
 export default function AboutSection({ surface = "bg-cream" }) {
   const { data, isLoading, isError, refetch } = useGetPublishedHomepageQuery();
@@ -69,25 +67,17 @@ export default function AboutSection({ surface = "bg-cream" }) {
               viewport={viewportOnce}
               variants={stagger(0.05, 0.1)}
             >
-              {(about.highlights || []).map(({ label, text }, index) => {
-                const Icon = HIGHLIGHT_ICONS[index % HIGHLIGHT_ICONS.length];
-                return (
-                  <motion.li
-                    key={`${label}-${index}`}
-                    variants={fadeUp}
-                    className="card p-3.5"
-                  >
-                    <CardWatermark topic={`${label} ${text || ""}`} tone="cyan" size="sm" />
-                    <span className="icon-well h-9 w-9">
-                      <Icon size={16} />
-                    </span>
-                    <p className="relative mt-2.5 text-sm font-semibold text-ink-900">{label}</p>
-                    {text ? (
-                      <p className="relative mt-1 text-xs leading-relaxed text-ink-500">{text}</p>
-                    ) : null}
+              {(about.highlights || []).map(({ label, text }, index) => (
+                  <motion.li key={`${label}-${index}`} variants={fadeUp}>
+                    <div className={featureStyles.card}>
+                      <div className={featureStyles.content}>
+                        <p className={featureStyles.title}>{label}</p>
+                        {text ? <p className={featureStyles.text}>{text}</p> : null}
+                      </div>
+                      <FeatureCardArt kind={featureKind(label, text, index)} />
+                    </div>
                   </motion.li>
-                );
-              })}
+                ))}
             </motion.ul>
           </div>
         )}

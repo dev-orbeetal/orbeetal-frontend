@@ -22,7 +22,7 @@ export default function Home() {
         heroSurface={pageSurface(0)}
         statsSurface={pageSurface(1)}
       />
-      <div className={`${pageSurface(1)} basis-banner`}>
+      <div className={`${pageSurface(1)} pb-8`}>
         <SectionShell className="flex justify-center">
           <BasisBadge />
         </SectionShell>

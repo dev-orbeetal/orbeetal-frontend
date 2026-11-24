@@ -78,7 +78,7 @@ export const carouselVisual = (compact = false) => {
       opacity: 1,
       scale: 1,
       x: 0,
-      transition: { duration: 0.55, ease: EASE, delay: 0.08 },
+      transition: { duration: 0.62, ease: EASE, delay: 0.06 },
     },
     exit: (direction) => ({
       opacity: 0,

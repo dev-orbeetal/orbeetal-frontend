@@ -33,7 +33,7 @@ export default function TeamProfilePage() {
       <Header />
       <section className={`section ${pageSurface(0)} pt-28 sm:pt-32`}>
         <SectionShell>
-          <Link href="/team" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-ink hover:text-accent">
+          <Link href="/team" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-ink transition-colors hover:text-accent-ink">
             <ArrowLeft size={16} />
             Back to team
           </Link>
@@ -187,7 +187,7 @@ export default function TeamProfilePage() {
                             href={item.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-ink hover:text-accent"
+                            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-ink transition-colors hover:text-accent-ink"
                           >
                             View project
                             <ExternalLink size={14} aria-hidden />

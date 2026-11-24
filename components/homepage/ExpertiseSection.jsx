@@ -10,7 +10,6 @@ import { useGetPublishedHomepageQuery } from "@/redux/features/cms/homepageApi";
 import SectionShell from "@/components/layouts/SectionShell";
 import { slugify } from "@/lib/slug";
 import { expertiseVisual } from "./expertiseVisuals";
-import { CardWatermark } from "@/components/illustrations";
 
 function serviceHref(service) {
   return `/services#service-tab-${slugify(service?.title)}`;
@@ -73,7 +72,6 @@ function ExpertiseCard({ service, index }) {
         }
       }}
     >
-      <CardWatermark topic={service} tone={index % 2 === 0 ? "cyan" : "navy"} size="md" />
       <div className="relative flex items-center gap-3">
         <span className="dept-icon dept-icon--cyan shrink-0">
           <Icon size={20} strokeWidth={2.1} />
@@ -139,7 +137,7 @@ export default function ExpertiseSection({ surface = "bg-cream" }) {
 
         {services.length > 0 && (
           <motion.div
-            className="dept-grid__row section-stack mx-auto max-w-6xl"
+            className="dept-grid__row section-stack"
             initial={reduce ? false : "hidden"}
             whileInView="visible"
             viewport={viewportOnce}

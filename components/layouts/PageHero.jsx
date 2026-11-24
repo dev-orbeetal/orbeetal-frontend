@@ -22,22 +22,22 @@ export default function PageHero({
             <span className="eyebrow eyebrow-light mb-4">{eyebrow}</span>
           )}
 
-          <h1 className="text-[clamp(2rem,1.4rem+3vw,3.4rem)] font-extrabold leading-[1.1] tracking-tight text-ink-900">
+          <h1 className="page-title">
             {title} {highlight && <span className="hero-gradient-text">{highlight}</span>}
           </h1>
 
           {subtitle && (
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-ink-500 sm:text-lg">
+            <p className="lead mx-auto mt-5 max-w-2xl">
               {subtitle}
             </p>
           )}
 
           <nav className="mt-6 flex items-center justify-center gap-1.5 text-sm font-semibold text-ink-500">
-            <Link href="/" className="transition-colors hover:text-accent">
+            <Link href="/" className="transition-colors hover:text-cyan-ink">
               Home
             </Link>
             <ChevronRight size={15} className="text-ink-400" aria-hidden />
-            <span className="text-accent">{crumb || title}</span>
+            <span className="text-accent-ink">{crumb || title}</span>
           </nav>
         </div>
       </SectionShell>

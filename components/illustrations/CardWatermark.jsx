@@ -14,6 +14,7 @@ export default function CardWatermark({
   tone = "navy",
   size = "md",
   placement = "corner",
+  cover = false,
   className = "",
 }) {
   const Art = MOTIFS[motif] || MOTIFS[resolveMotifName(topic)] || MOTIFS.orbit;
@@ -43,24 +44,35 @@ export default function CardWatermark({
     };
   }, []);
 
-  const rest = {
-    opacity: tone === "cyan" ? 0.08 : 0.07,
-    scale: 1,
-    x: 0,
-    y: 0,
-  };
-  const hover = {
-    opacity: 0.1,
-    scale: 1.045,
-    x: 5,
-    y: -3,
-  };
+  useEffect(() => {
+    if (!cover) return;
+    wrapRef.current?.querySelector("svg")?.setAttribute("preserveAspectRatio", "xMidYMid slice");
+  }, [Art, cover]);
+
+  const rest = cover
+    ? { opacity: 0.42, scale: 1 }
+    : {
+        opacity: tone === "cyan" ? 0.08 : 0.07,
+        scale: 1,
+        x: 0,
+        y: 0,
+      };
+  const hover = cover
+    ? { opacity: 0.55, scale: 1.03 }
+    : {
+        opacity: 0.1,
+        scale: 1.045,
+        x: 5,
+        y: -3,
+      };
 
   return (
     <motion.span
       ref={wrapRef}
       aria-hidden
-      className={`card-watermark card-watermark--${tone} card-watermark--${size} card-watermark--${placement} ${className}`.trim()}
+      className={`card-watermark card-watermark--${tone} ${
+        cover ? "card-watermark--cover" : `card-watermark--${size} card-watermark--${placement}`
+      } ${className}`.trim()}
       initial={false}
       animate={reduce || !hovered ? rest : hover}
       transition={{ duration: 0.45, ease: EASE }}

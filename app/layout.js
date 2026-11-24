@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans, Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/providers/provider";
 import SiteFooter from "@/components/layouts/SiteFooter";
@@ -10,16 +10,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
   subsets: ["latin"],
   display: "swap",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -40,7 +30,7 @@ export const metadata = {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#E0F0F6" },
+    { media: "(prefers-color-scheme: light)", color: "#F5F9FC" },
     { media: "(prefers-color-scheme: dark)", color: "#071A2B" },
   ],
 };
@@ -56,7 +46,7 @@ export default function RootLayout({ children }) {
       </head>
       <Providers>
         <body
-          className={`${plusJakarta.variable} ${geistSans.variable} ${geistMono.variable} antialiased min-h-screen overflow-x-hidden w-full max-w-full`}
+          className={`${plusJakarta.variable} antialiased min-h-screen overflow-x-hidden w-full max-w-full`}
         >
           <ServiceWorkerRegister />
           <SiteChrome>{children}</SiteChrome>

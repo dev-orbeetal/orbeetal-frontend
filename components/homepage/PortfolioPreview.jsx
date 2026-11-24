@@ -1,19 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ShowcaseCarousel from "@/components/ui/ShowcaseCarousel";
 import ShowcaseWorkCard, { WorkDialog } from "@/components/ui/ShowcaseWorkCard";
 import { useGetPublishedProjectsQuery } from "@/redux/features/cms/projectsApi";
+import ExploreProjects from "@/components/homepage/ExploreProjects";
 import SectionShell from "@/components/layouts/SectionShell";
 
 export default function PortfolioPreview({ surface = "bg-cream" }) {
   const { data: projects = [], isLoading, isError, refetch } =
     useGetPublishedProjectsQuery();
-  const featured = projects.slice(0, 6);
   const [open, setOpen] = useState(null);
 
   return (
@@ -45,12 +44,12 @@ export default function PortfolioPreview({ surface = "bg-cream" }) {
           </div>
         )}
 
-        {featured.length > 0 && (
+        {projects.length > 0 && (
           <ShowcaseCarousel
             className="section-stack"
-            items={featured}
+            items={projects}
             getKey={(item) => item.id}
-            label="featured projects"
+            label="projects"
             renderItem={(project) => {
               const title = project.title || project.name;
               const summary = project.subtitle || project.description;
@@ -84,11 +83,7 @@ export default function PortfolioPreview({ surface = "bg-cream" }) {
           <WorkDialog title={open.title} description={open.description} onClose={() => setOpen(null)} />
         ) : null}
 
-        <div className="mt-8 flex justify-center">
-          <Link href="/portfolio" className="btn btn-primary">
-            See Our Work
-          </Link>
-        </div>
+        <ExploreProjects projects={projects} />
       </SectionShell>
     </section>
   );

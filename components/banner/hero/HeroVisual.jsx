@@ -17,7 +17,7 @@ export default function HeroVisual({ theme, direction, compact, slideKey }) {
         initial={reduce ? false : "enter"}
         animate="center"
         exit={reduce ? undefined : "exit"}
-        transition={{ duration: reduce ? 0.3 : 0.55, ease: EASE }}
+        transition={{ duration: reduce ? 0.3 : 0.62, ease: EASE }}
       >
         <HeroScene theme={theme} />
       </motion.div>

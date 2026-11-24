@@ -8,7 +8,7 @@ export default function TrustRow() {
   const logos = data?.trust_logos || [];
 
   return (
-    <div className="flex min-w-0 max-w-full flex-wrap items-center gap-x-2 gap-y-1.5">
+    <div className="flex items-center gap-1.5">
       {logos.length > 0 ? (
         <div className="flex items-center gap-1">
           {logos.map((client) => (
@@ -28,7 +28,7 @@ export default function TrustRow() {
           ))}
         </div>
       ) : null}
-      <p className="min-w-0 text-sm leading-snug text-ink-500">
+      <p className="text-sm text-ink-500">
         Trusted by{" "}
         <span className="font-semibold text-ink-800">50+ businesses</span>{" "}
         worldwide

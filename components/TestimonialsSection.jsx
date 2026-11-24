@@ -7,7 +7,6 @@ import { useGetPublishedTestimonialsQuery } from "@/redux/features/cms/testimoni
 import SectionHeading from "@/components/ui/SectionHeading";
 import ShowcaseCarousel from "@/components/ui/ShowcaseCarousel";
 import SectionShell from "@/components/layouts/SectionShell";
-import { CardWatermark } from "@/components/illustrations";
 
 function QuoteExcerpt({ text, onMore }) {
   const clampRef = useRef(null);
@@ -43,7 +42,7 @@ function QuoteExcerpt({ text, onMore }) {
         <button
           type="button"
           onClick={onMore}
-          className="relative mt-2 text-sm font-bold text-accent"
+          className="relative mt-2 text-sm font-bold text-accent-ink transition-colors hover:text-cyan-ink"
         >
           See more
         </button>
@@ -162,7 +161,6 @@ export default function TestimonialsSlider({ surface = "bg-cream" }) {
             size="wide"
             renderItem={(quote) => (
               <article className="showcase-carousel-card relative h-full min-h-[var(--showcase-card-height)] px-6 pb-6 pt-5 sm:px-8 sm:pb-7">
-                <CardWatermark topic="client collaboration" tone="cyan" size="sm" />
                 <span className="absolute right-6 top-4 select-none font-serif text-6xl leading-none text-primary/20">
                   ”
                 </span>

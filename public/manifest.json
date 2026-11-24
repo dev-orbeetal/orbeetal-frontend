@@ -9,8 +9,8 @@
   "orientation": "any",
   "dir": "ltr",
   "lang": "en-US",
-  "theme_color": "#E0F0F6",
-  "background_color": "#E0F0F6",
+  "theme_color": "#F5F9FC",
+  "background_color": "#F5F9FC",
   "icons": [
     {
       "purpose": "maskable",

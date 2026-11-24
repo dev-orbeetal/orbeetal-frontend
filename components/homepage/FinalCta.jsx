@@ -22,7 +22,7 @@ export default function FinalCta({ surface = "bg-sage" }) {
           <h2 className="section-title text-[clamp(1.8rem,1.2rem+2.3vw,2.85rem)] font-extrabold leading-[1.12] tracking-tight">
             Ready to build something great?
           </h2>
-          <p className="mt-4 text-lg font-semibold text-accent sm:text-xl">
+          <p className="mt-4 text-lg font-semibold text-accent-ink sm:text-xl">
             Let’s Turn Your Ideas Into Impact
           </p>
           <Link href="/contact" className="btn btn-primary mt-8">
