@@ -66,7 +66,8 @@ function ExpertiseCard({ service, index }) {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={(event) => {
-        if (pointerType.current !== "mouse" && !open) {
+        const wide = window.matchMedia("(min-width: 768px)").matches;
+        if (wide && pointerType.current !== "mouse" && !open) {
           event.preventDefault();
           setOpen(true);
         }
@@ -84,8 +85,13 @@ function ExpertiseCard({ service, index }) {
         </span>
       </div>
       {text ? <p className="sr-only">{text}</p> : null}
+      {text ? (
+        <p className="relative mt-1.5 line-clamp-3 text-[0.9rem] leading-relaxed text-ink-500 md:hidden">
+          {text}
+        </p>
+      ) : null}
       {open && text ? (
-        <p className="relative mt-1.5 max-w-[17rem] pr-2 text-[0.9rem] leading-relaxed text-ink-500" aria-hidden>
+        <p className="relative mt-1.5 hidden max-w-[17rem] pr-2 text-[0.9rem] leading-relaxed text-ink-500 md:block" aria-hidden>
           {shown}
           {typing ? (
             <span className="ml-0.5 inline-block h-[1em] w-px translate-y-[2px] animate-pulse bg-cyan-ink align-middle" />

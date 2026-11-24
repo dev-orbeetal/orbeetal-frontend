@@ -86,7 +86,12 @@ function MethodStep({ step, index, reduce }) {
             <span className="method-card__rule" aria-hidden />
           </div>
         </div>
-        <ul className="sr-only">
+        <ul className="method-card__sr sr-only">
+          {points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+        <ul className="method-card__points">
           {points.map((point) => (
             <li key={point}>{point}</li>
           ))}

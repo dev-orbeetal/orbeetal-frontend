@@ -110,6 +110,12 @@ export default function ShowcaseCarousel({
     const measure = () => {
       const slides = [...root.querySelectorAll(".showcase-carousel-slide")];
       if (!slides.length) return;
+      const viewportEl = root.querySelector(".showcase-carousel-viewport");
+      if (viewportEl && window.innerWidth < 768) {
+        root.style.setProperty("--showcase-card", `${viewportEl.clientWidth}px`);
+      } else {
+        root.style.removeProperty("--showcase-card");
+      }
       const cardWidth = slides[0].offsetWidth;
       const stepWidth = cardWidth + readGap(root);
       setStep(stepWidth);
