@@ -3,11 +3,12 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, LayoutGrid } from "lucide-react";
+import { ArrowUpRight, ChevronDown, LayoutGrid } from "lucide-react";
 import { PROJECT_CATEGORIES, categoryLabel } from "@/redux/features/cms/projectsApi";
 
 export default function ExploreProjects({ projects = [] }) {
   const [filter, setFilter] = useState("all");
+  const [expanded, setExpanded] = useState(false);
 
   const filters = useMemo(() => {
     const groups = PROJECT_CATEGORIES.map((item) => ({
@@ -24,6 +25,24 @@ export default function ExploreProjects({ projects = [] }) {
 
   return (
     <div className="mt-16">
+      {expanded ? null : (
+        <div className="flex justify-center">
+          <button
+            type="button"
+            className="explore-launch btn btn-primary"
+            aria-expanded="false"
+            onClick={() => setExpanded(true)}
+          >
+            <LayoutGrid size={16} aria-hidden />
+            <span>Explore all projects</span>
+            <span className="explore-launch-count">{projects.length}</span>
+            <ChevronDown size={16} className="explore-launch-arrow" aria-hidden />
+          </button>
+        </div>
+      )}
+
+      {expanded ? (
+        <>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <h3 className="text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
           Explore all <span className="text-gradient">projects</span>
@@ -106,12 +125,23 @@ export default function ExploreProjects({ projects = [] }) {
         })}
       </ul>
 
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <button
+          type="button"
+          className="btn btn-ghost"
+          aria-expanded="true"
+          onClick={() => setExpanded(false)}
+        >
+          Show less
+          <ChevronDown size={16} className="rotate-180" aria-hidden />
+        </button>
         <Link href="/portfolio" className="btn btn-ghost">
           View all projects
           <ArrowUpRight size={16} className="btn-icon" />
         </Link>
       </div>
+        </>
+      ) : null}
     </div>
   );
 }

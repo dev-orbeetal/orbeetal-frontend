@@ -707,6 +707,12 @@ html.dark .basis-badge {
     radial-gradient(14rem 10rem at 100% -10%, color-mix(in srgb, var(--brand-primary) 12%, transparent), transparent 58%),
     linear-gradient(180deg, var(--surface) 0%, var(--pale) 100%);
 }
+html.dark .basis-badge-logo {
+  background: #fff;
+  border-radius: 0.45rem;
+  padding: 0.28rem 0.5rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
 .charcoal-surface .basis-badge,
 html.dark .charcoal-surface .basis-badge {
   background:
@@ -1050,6 +1056,59 @@ html:not(.dark) .logo-on-light {
   background: color-mix(in srgb, var(--brand-accent) 82%, #ffffff);
   transform: translateY(-2px);
   box-shadow: 0 14px 28px -10px rgba(95, 150, 32, 0.7);
+}
+.explore-launch {
+  position: relative;
+  overflow: hidden;
+}
+.explore-launch > * {
+  position: relative;
+  z-index: 1;
+}
+.explore-launch {
+  min-height: 3.25rem;
+  padding-inline: 1.35rem 1.15rem;
+  animation: explore-launch-glow 2.4s ease-in-out infinite;
+}
+.explore-launch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 48%, transparent 62%);
+  transform: translateX(-120%);
+  animation: explore-launch-sheen 2.4s ease-in-out infinite;
+}
+.explore-launch-count {
+  display: inline-flex;
+  min-width: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(15, 46, 70, 0.12);
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+}
+.explore-launch-arrow {
+  animation: explore-launch-bob 2.4s ease-in-out infinite;
+}
+@keyframes explore-launch-glow {
+  0%, 100% { box-shadow: 0 8px 18px -10px rgba(95, 150, 32, 0.65); }
+  50% { box-shadow: 0 16px 32px -8px rgba(95, 150, 32, 0.9); }
+}
+@keyframes explore-launch-sheen {
+  0%, 55% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+@keyframes explore-launch-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore-launch,
+  .explore-launch::after,
+  .explore-launch-arrow {
+    animation: none;
+  }
 }
 
 .btn-teal {

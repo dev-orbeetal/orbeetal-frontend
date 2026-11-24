@@ -1,3 +1,20 @@
+.triangle {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+@media (min-width: 768px) {
+  .triangle {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.15rem;
+    align-items: stretch;
+  }
+  .triangle > li:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 0.575rem);
+  }
+}
 .card {
   position: relative;
   display: flex;

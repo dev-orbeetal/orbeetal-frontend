@@ -7,7 +7,6 @@ import Reveal from "@/components/ui/Reveal";
 import { fadeUp, stagger, viewportOnce } from "@/components/ui/motion";
 import { useGetPublishedHomepageQuery } from "@/redux/features/cms/homepageApi";
 import SectionShell from "@/components/layouts/SectionShell";
-import MilestoneScene from "@/components/homepage/MilestoneScene";
 import FeatureCardArt, { featureKind, featureStyles } from "@/components/homepage/FeatureCardArt";
 
 export default function AboutSection({ surface = "bg-cream" }) {
@@ -35,7 +34,7 @@ export default function AboutSection({ surface = "bg-cream" }) {
         )}
 
         {about && (
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,28rem)_minmax(14rem,18rem)] lg:gap-6 xl:gap-10">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
             <Reveal direction="left">
               <span className="eyebrow">{about.eyebrow}</span>
               <h2 className="section-title mt-4 max-w-xl">
@@ -56,12 +55,8 @@ export default function AboutSection({ surface = "bg-cream" }) {
               ) : null}
             </Reveal>
 
-            <Reveal className="mx-auto w-full max-w-md sm:max-w-lg lg:max-w-none">
-              <MilestoneScene className="mx-auto h-auto w-full" />
-            </Reveal>
-
             <motion.ul
-              className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1"
+              className={featureStyles.triangle}
               initial={reduce ? false : "hidden"}
               whileInView="visible"
               viewport={viewportOnce}
