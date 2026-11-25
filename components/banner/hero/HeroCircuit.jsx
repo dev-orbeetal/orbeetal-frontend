@@ -6,18 +6,13 @@ const random = (min, max) => min + Math.random() * (max - min);
 
 const WAVE = { amplitude: 55, frequency: 1.1, speed: 0.45, spacing: 0.19 };
 
-const LIGHT = {
-  trace: (alpha) => `rgba(18, 52, 77, ${alpha})`,
-  node: (alpha) => `rgba(39, 191, 199, ${alpha})`,
-  pulse: ["rgba(39, 191, 199, 0.55)", "rgba(39, 191, 199, 0)"],
-  wave: (alpha) => `rgba(39, 191, 199, ${alpha})`,
-};
-
-const DARK = {
-  trace: (alpha) => `rgba(0, 163, 223, ${alpha})`,
-  node: (alpha) => `rgba(30, 196, 255, ${alpha})`,
-  pulse: ["rgba(88, 224, 255, 0.85)", "rgba(0, 174, 255, 0)"],
-  wave: (alpha) => `rgba(0, 167, 230, ${alpha})`,
+// Brand palette (globals.css): --brand-primary-dark #0891b2, --cyan #22d3ee, --cyan-ink #67e8f9.
+// Canvas can't read CSS variables per frame, so the RGB triplets are mirrored here.
+const COLORS = {
+  trace: (alpha) => `rgba(34, 211, 238, ${alpha})`,
+  node: (alpha) => `rgba(34, 211, 238, ${alpha})`,
+  pulse: ["rgba(103, 232, 249, 0.55)", "rgba(34, 211, 238, 0)"],
+  wave: (alpha) => `rgba(34, 211, 238, ${alpha})`,
 };
 
 function buildWaves() {
@@ -29,7 +24,7 @@ function buildWaves() {
     frequency: WAVE.frequency,
     phase: index * WAVE.spacing,
     speed: WAVE.speed,
-    opacity: 0.08 + (index / (count - 1)) * 0.07,
+    opacity: 0.06 + (index / (count - 1)) * 0.05,
   }));
 }
 
@@ -58,7 +53,7 @@ function buildPaths(width, height) {
         length: segments.reduce((sum, segment) => sum + segment, 0),
         speed: random(4, 11),
         phase: Math.random(),
-        opacity: random(0.1, 0.2),
+        opacity: random(0.12, 0.18),
       });
     }
   }
@@ -99,8 +94,7 @@ export default function HeroCircuit({ paused = false, reduce = false }) {
     let frame = 0;
     let running = true;
 
-    const colors = () =>
-      document.documentElement.classList.contains("dark") ? DARK : LIGHT;
+    const colors = () => COLORS;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -125,14 +119,16 @@ export default function HeroCircuit({ paused = false, reduce = false }) {
           else context.moveTo(x, y);
         });
         context.strokeStyle = palette.trace(path.opacity);
-        context.lineWidth = 0.7;
+        context.lineWidth = 0.85;
         context.stroke();
 
         const [endX, endY] = path.points[path.points.length - 1];
-        context.beginPath();
-        context.arc(endX, endY, 1.6, 0, Math.PI * 2);
-        context.fillStyle = palette.node(Math.min(path.opacity + 0.05, 0.28));
-        context.fill();
+        const bubble = context.createRadialGradient(endX, endY, 0, endX, endY, 6);
+        bubble.addColorStop(0, palette.node(Math.min(path.opacity + 0.14, 0.48)));
+        bubble.addColorStop(0.45, palette.node(0.14));
+        bubble.addColorStop(1, palette.node(0));
+        context.fillStyle = bubble;
+        context.fillRect(endX - 7, endY - 7, 14, 14);
 
         if (reduceRef.current) continue;
         const distance = (time * path.speed + path.phase * (path.length + 60)) % (path.length + 60);

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    .dart{transform-box:view-box;transform-origin:94px 112px;animation:aim 2.4s ease-in-out infinite}
+    @keyframes aim{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(6deg)}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+        <g>
+    <circle cx="94" cy="112" r="40" fill="#102848"/>
+    <circle cx="94" cy="112" r="31" fill="#d7f4fa"/>
+    <circle cx="94" cy="112" r="23" fill="#102848"/>
+    <circle cx="94" cy="112" r="15" fill="#8adcf0"/>
+    <circle cx="94" cy="112" r="8" fill="#1898d8"/>
+    <circle cx="94" cy="112" r="3.2" fill="#f4fbfe"/>
+  </g>
+  <g class="dart">
+    <line x1="100" y1="106" x2="142" y2="64" stroke="#d7f4fa" stroke-width="7" stroke-linecap="round"/>
+    <path d="M132 46l28 8-22 22-2-8z" fill="#f5c14d"/>
+    <path d="M132 46l10 14 8-8z" fill="#e2a62e"/>
+  </g>
+</svg>

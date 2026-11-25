@@ -23,16 +23,16 @@
   overflow: hidden;
   isolation: isolate;
   min-height: 210px;
-  border: 1px solid #cbdfea;
+  border: 1px solid color-mix(in srgb, var(--cyan) 22%, transparent);
   border-radius: 25px;
-  background: linear-gradient(120deg, #fff 30%, #edf7fa);
+  background: linear-gradient(120deg, var(--surface) 30%, var(--surface-soft));
   padding: 22px 18px 8px;
   text-align: center;
-  transition: box-shadow 0.35s, border-color 0.35s, transform 0.35s;
+  transition: box-shadow 0.28s, border-color 0.28s, transform 0.28s;
 }
 .card:hover {
-  border-color: #91cf44;
-  box-shadow: 0 14px 35px #15354b14;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 28%, transparent), 0 16px 36px color-mix(in srgb, var(--cyan) 16%, transparent);
   transform: translateY(-3px);
 }
 .content {
@@ -43,7 +43,7 @@
 }
 .title {
   margin: 0 0 6px;
-  color: #15354b;
+  color: var(--ink-900);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -53,7 +53,7 @@
 .text {
   max-width: 16rem;
   margin: 0 auto;
-  color: #58778b;
+  color: var(--ink-500);
   font-size: 14px;
   line-height: 1.5;
   text-align: center;
@@ -160,14 +160,4 @@
   .trend {
     stroke-dashoffset: 0;
   }
-}
-:global(html.dark) .card {
-  border-color: #2a5168;
-  background: linear-gradient(120deg, #163044 30%, #12344d);
-}
-:global(html.dark) .title {
-  color: #f4fbfe;
-}
-:global(html.dark) .text {
-  color: #9ec4d6;
 }

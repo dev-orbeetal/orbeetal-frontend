@@ -1,8 +1,14 @@
 import Header from "@/components/banner/Header";
 import PageHero from "@/components/layouts/PageHero";
 import AboutStory from "@/components/about/AboutStory";
-import TeamSection from "@/components/homepage/TeamSection";
+import BoardOfDirectors from "@/components/team/BoardOfDirectors";
 import { pageSurface, pageSurfaceToken } from "@/lib/surfaces";
+
+export const metadata = {
+  title: "About Us — Orbeetal",
+  description:
+    "Who we are: a Dhaka-based software company building web, mobile, AI and security solutions for clients worldwide.",
+};
 
 export default function AboutPage() {
   return (
@@ -18,7 +24,7 @@ export default function AboutPage() {
         waveFill={pageSurfaceToken(1)}
       />
       <AboutStory surface={pageSurface(1)} />
-      <TeamSection surface={pageSurface(2)} />
+      <BoardOfDirectors surface={pageSurface(2)} />
     </main>
   );
 }

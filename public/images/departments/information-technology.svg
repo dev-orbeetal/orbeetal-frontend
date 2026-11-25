@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    .pin{animation:pin 1.6s ease-in-out infinite}
+    .p2{animation-delay:.12s}.p3{animation-delay:.24s}.p4{animation-delay:.36s}
+    .p5{animation-delay:.48s}.p6{animation-delay:.6s}.p7{animation-delay:.72s}.p8{animation-delay:.84s}
+    .core{animation:core 1.6s ease-in-out infinite}
+    .led{animation:led 1.6s ease-in-out infinite}
+    .led-2{animation-delay:.8s}
+    @keyframes pin{0%,100%{opacity:.35}40%,70%{opacity:1}}
+    @keyframes core{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+    @keyframes led{0%,100%{opacity:.4}50%{opacity:1}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+        <rect x="40" y="52" width="120" height="86" rx="12" fill="#16324a" stroke="#67e8f9" stroke-width="2"/>
+  <rect x="48" y="60" width="104" height="70" rx="8" fill="#d7f3fb"/>
+  <rect x="54" y="66" width="92" height="58" rx="4" fill="#102848"/>
+  <rect x="90" y="138" width="20" height="12" rx="3" fill="#2a5580"/>
+  <rect x="74" y="148" width="52" height="6" rx="3" fill="#67e8f9"/>
+  <circle class="led" cx="64" cy="76" r="2.4" fill="#f5c14d"/>
+  <circle class="led led-2" cx="136" cy="112" r="2.4" fill="#f5c14d"/>
+  <g class="core" style="transform-box:fill-box;transform-origin:center">
+    <rect x="84" y="80" width="32" height="28" rx="6" fill="#18a8d8"/>
+    <rect x="94" y="89" width="12" height="10" rx="2" fill="#f4fbfe"/>
+  </g>
+  <g fill="#7adcea">
+    <rect class="pin" x="78" y="72" width="3" height="8" rx="1"/>
+    <rect class="pin p2" x="90" y="72" width="3" height="8" rx="1"/>
+    <rect class="pin p3" x="102" y="72" width="3" height="8" rx="1"/>
+    <rect class="pin p4" x="114" y="72" width="3" height="8" rx="1"/>
+    <rect class="pin p5" x="78" y="108" width="3" height="8" rx="1"/>
+    <rect class="pin p6" x="90" y="108" width="3" height="8" rx="1"/>
+    <rect class="pin p7" x="102" y="108" width="3" height="8" rx="1"/>
+    <rect class="pin p8" x="114" y="108" width="3" height="8" rx="1"/>
+    <rect class="pin p2" x="70" y="86" width="8" height="3" rx="1"/>
+    <rect class="pin p4" x="70" y="98" width="8" height="3" rx="1"/>
+    <rect class="pin p6" x="122" y="86" width="8" height="3" rx="1"/>
+    <rect class="pin p8" x="122" y="98" width="8" height="3" rx="1"/>
+  </g>
+</svg>

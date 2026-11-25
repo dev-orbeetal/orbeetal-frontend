@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    .node{transform-box:fill-box;transform-origin:center;animation:node 2s ease-in-out infinite}
+    .node-2{animation-delay:.3s}.node-3{animation-delay:.6s}
+    .check{transform-box:fill-box;transform-origin:center;animation:pop 2.2s ease-in-out infinite}
+    .check-2{animation-delay:.45s}
+    @keyframes node{0%,100%{transform:scale(.9)}50%{transform:scale(1.08)}}
+    @keyframes pop{0%,100%{transform:scale(.86)}50%{transform:scale(1.12)}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+        <rect x="64" y="52" width="72" height="104" rx="12" fill="#16324a" stroke="#67e8f9" stroke-width="2"/>
+  <rect x="72" y="68" width="56" height="80" rx="6" fill="#f4fbfc"/>
+  <rect x="84" y="44" width="32" height="16" rx="5" fill="#f0c14d"/>
+  <rect x="94" y="48" width="12" height="6" rx="2" fill="#e2a62e"/>
+  <path class="check" d="M86 86l5 5 9-10" fill="none" stroke="#e2a62e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M84 108h28" fill="none" stroke="#2088c8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M112 108v22" fill="none" stroke="#2088c8" stroke-width="4" stroke-linecap="round"/>
+  <circle class="node" cx="84" cy="108" r="7" fill="none" stroke="#2088c8" stroke-width="3.5"/>
+  <circle class="node node-2" cx="112" cy="108" r="7" fill="none" stroke="#2088c8" stroke-width="3.5"/>
+  <circle class="node node-3" cx="112" cy="130" r="7" fill="none" stroke="#2088c8" stroke-width="3.5"/>
+  <path class="check check-2" d="M78 124l5 5 9-10" fill="none" stroke="#2ebe8a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

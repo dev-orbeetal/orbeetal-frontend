@@ -309,7 +309,6 @@ export default function BannerSlider({ surface = "bg-sage" }) {
             className={`hero-service-nav lg:col-span-2${paused ? " is-paused" : ""}${
               reduceMotion ? " is-reduced" : ""
             }`}
-            style={{ "--hero-slide-ms": `${SLIDE_DURATION}ms` }}
             onMouseEnter={() => setControlsHover(true)}
             onMouseLeave={() => setControlsHover(false)}
           >
@@ -328,9 +327,6 @@ export default function BannerSlider({ surface = "bg-sage" }) {
                     aria-label={item.tag || label}
                     title={item.tag || label}
                   >
-                    <span className="hero-service-track">
-                      <span key={i === current ? `run-${current}` : `idle-${i}`} />
-                    </span>
                     <ServiceIcon id={themeId} />
                   </button>
                 );

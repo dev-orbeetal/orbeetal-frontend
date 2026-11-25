@@ -7,7 +7,7 @@ import FinalCta from "@/components/homepage/FinalCta";
 import ProductSection from "@/components/homepage/ProductSection";
 import DepartmentPreview from "@/components/homepage/DepartmentPreview";
 import PortfolioPreview from "@/components/homepage/PortfolioPreview";
-import TeamSection from "@/components/homepage/TeamSection";
+import BoardOfDirectors from "@/components/team/BoardOfDirectors";
 import WhatWeDo from "@/components/homepage/WhatWeDo";
 import WhyChooseUs from "@/components/homepage/WhyChooseUs";
 import TestimonialsSlider from "@/components/TestimonialsSection";
@@ -31,11 +31,11 @@ export default function Home() {
       <WhyChooseUs surface={pageSurface(3)} />
       <WhatWeDo surface={pageSurface(4)} />
       <ExpertiseSection surface={pageSurface(5)} />
-      <DepartmentPreview surface={pageSurface(6)} />
-      <ProductSection surface={pageSurface(7)} />
-      <PortfolioPreview surface={pageSurface(8)} />
-      <TestimonialsSlider surface={pageSurface(9)} />
-      <TeamSection surface={pageSurface(10)} />
+      <ProductSection surface={pageSurface(6)} />
+      <PortfolioPreview surface={pageSurface(7)} />
+      <TestimonialsSlider surface={pageSurface(8)} />
+      <DepartmentPreview surface={pageSurface(9)} />
+      <BoardOfDirectors surface={pageSurface(10)} />
       <ClientSection surface={pageSurface(11)} />
       <FinalCta surface={pageSurface(12)} />
       <ContactSection surface={pageSurface(13)} />

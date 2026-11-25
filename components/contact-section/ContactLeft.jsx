@@ -44,7 +44,7 @@ export default function ContactLeft() {
       </div>
 
       <div className="mt-10 flex items-center gap-4">
-        <div className="grid h-20 w-20 place-items-center rounded-2xl bg-primary text-white shadow-[var(--shadow-brand)]">
+        <div className="grid h-20 w-20 place-items-center rounded-2xl bg-primary text-on-cta shadow-[var(--shadow-brand)]">
           <PhoneCall className="h-8 w-8" />
         </div>
         <div>

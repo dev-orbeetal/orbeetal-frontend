@@ -114,9 +114,9 @@ function FeatureRow({ service, index, started }) {
     <motion.div
       variants={fadeRight}
       transition={{ duration: 0.22, ease: EASE }}
-      className="card group flex items-start gap-3.5 p-4 transition-colors duration-200 hover:border-cyan/50 hover:bg-accent-light/50"
+      className="card group flex items-start gap-3.5 p-4 transition-colors duration-200 hover:border-cyan/50 hover:bg-surface-soft"
     >
-      <span className="icon-well transition-colors duration-200 group-hover:bg-accent-light">
+      <span className="icon-well transition-colors duration-200 group-hover:bg-cyan/25">
         {service.icon ? (
           <Image
             src={service.icon}

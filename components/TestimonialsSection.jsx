@@ -42,7 +42,7 @@ function QuoteExcerpt({ text, onMore }) {
         <button
           type="button"
           onClick={onMore}
-          className="relative mt-2 text-sm font-bold text-accent-ink transition-colors hover:text-cyan-ink"
+          className="relative mt-1 inline-flex min-h-11 items-center text-sm font-bold text-cyan-ink transition-colors hover:text-white"
         >
           See more
         </button>
@@ -161,7 +161,7 @@ export default function TestimonialsSlider({ surface = "bg-cream" }) {
             size="wide"
             renderItem={(quote) => (
               <article className="showcase-carousel-card relative h-full min-h-[var(--showcase-card-height)] px-6 pb-6 pt-5 sm:px-8 sm:pb-7">
-                <span className="absolute right-6 top-4 select-none font-serif text-6xl leading-none text-primary/20">
+                <span className="absolute right-6 top-4 quote-glyph select-none text-6xl leading-none text-primary/20">
                   ”
                 </span>
                 <QuoteExcerpt text={quote.quote} onMore={() => setOpenQuote(quote)} />

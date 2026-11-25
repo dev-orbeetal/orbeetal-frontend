@@ -121,7 +121,7 @@ export default function ProjectModal({ project, onClose }) {
                           return (
                             <li key={name}>
                               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-2.5 py-1 text-sm font-semibold text-ink-800">
-                                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-white p-0.5">
+                                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-ink-800 p-0.5">
                                   <TechLogo name={name} logo={logo} />
                                 </span>
                                 {name}

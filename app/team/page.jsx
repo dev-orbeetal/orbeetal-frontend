@@ -1,6 +1,6 @@
 import Header from "@/components/banner/Header";
 import PageHero from "@/components/layouts/PageHero";
-import TeamSection from "@/components/homepage/TeamSection";
+import BoardOfDirectors from "@/components/team/BoardOfDirectors";
 import Stats from "@/components/banner/Stats";
 import FinalCta from "@/components/homepage/FinalCta";
 import { pageSurface, pageSurfaceToken } from "@/lib/surfaces";
@@ -22,7 +22,7 @@ export default function TeamPage() {
         surface={pageSurface(0)}
         waveFill={pageSurfaceToken(1)}
       />
-      <TeamSection showHeading={false} surface={pageSurface(1)} />
+      <BoardOfDirectors showHeading={false} surface={pageSurface(1)} />
       <Stats surface={pageSurface(2)} />
       <FinalCta surface={pageSurface(3)} />
     </main>

@@ -46,7 +46,7 @@ export default function DepartmentCard({
             </span>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                <span className="text-[0.8rem] font-semibold tracking-[0.12em] text-ink-400">
+                <span className="font-tech text-[0.8rem] text-ink-400">
                   {number}
                 </span>
                 <h3 className="text-[1.35rem] font-extrabold leading-tight text-ink-900">
@@ -71,7 +71,7 @@ export default function DepartmentCard({
             <span className={`dept-icon dept-icon--${tone}`}>
               <Icon size={20} strokeWidth={2.1} />
             </span>
-            <span className="text-[0.8rem] font-semibold tracking-[0.12em] text-ink-400">
+            <span className="font-tech text-[0.8rem] text-ink-400">
               {number}
             </span>
           </div>

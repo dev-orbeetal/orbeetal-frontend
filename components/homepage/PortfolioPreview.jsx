@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-import ShowcaseCarousel from "@/components/ui/ShowcaseCarousel";
-import ShowcaseWorkCard, { WorkDialog } from "@/components/ui/ShowcaseWorkCard";
+import DragRail from "@/components/ui/DragRail";
+import FeatureTile, { projectKicker } from "@/components/ui/FeatureTile";
+import { projectImages } from "@/lib/projectImages";
 import { useGetPublishedProjectsQuery } from "@/redux/features/cms/projectsApi";
 import ExploreProjects from "@/components/homepage/ExploreProjects";
 import SectionShell from "@/components/layouts/SectionShell";
@@ -13,8 +12,6 @@ import SectionShell from "@/components/layouts/SectionShell";
 export default function PortfolioPreview({ surface = "bg-cream" }) {
   const { data: projects = [], isLoading, isError, refetch } =
     useGetPublishedProjectsQuery();
-  const [open, setOpen] = useState(null);
-
   return (
     <section className={`section showcase-section ${surface}`}>
       <SectionShell>
@@ -22,10 +19,10 @@ export default function PortfolioPreview({ surface = "bg-cream" }) {
           eyebrow="Our Portfolio"
           title={
             <>
-              Projects we&apos;re <span className="text-gradient">proud of</span>
+              From Ideas to <span className="text-gradient">Impact</span>
             </>
           }
-          subtitle="A selection of work that defines our standards and ambition."
+          subtitle="Platforms we have designed, engineered and launched — each one built around a real purpose."
         />
 
         {isLoading && (
@@ -45,43 +42,31 @@ export default function PortfolioPreview({ surface = "bg-cream" }) {
         )}
 
         {projects.length > 0 && (
-          <ShowcaseCarousel
+          <DragRail
             className="section-stack"
             items={projects}
             getKey={(item) => item.id}
             label="projects"
-            renderItem={(project) => {
+            size="feature"
+            autoplay
+            renderItem={(project, index) => {
               const title = project.title || project.name;
-              const summary = project.subtitle || project.description;
               return (
-                <ShowcaseWorkCard
+                <FeatureTile
+                  image={projectImages(project)[0]}
                   title={title}
-                  description={summary}
-                  tags={(project.features || []).slice(0, 3)}
+                  badge={`${String(index + 1).padStart(2, "0")} / Featured`}
+                  kicker={projectKicker(project)}
+                  description={project.subtitle}
+                  features={project.features}
                   href={project.link || "/portfolio"}
                   external={Boolean(project.link)}
-                  linkLabel={project.link ? "Open project" : "View portfolio"}
-                  topic={project}
-                  onMore={() => setOpen({ title, description: summary })}
-                  image={
-                    project.image ? (
-                      <Image
-                        src={project.image}
-                        alt=""
-                        fill
-                        sizes="(max-width: 768px) 80vw, 24rem"
-                        className="object-cover"
-                      />
-                    ) : null
-                  }
+                  priority={index === 0}
                 />
               );
             }}
           />
         )}
-        {open ? (
-          <WorkDialog title={open.title} description={open.description} onClose={() => setOpen(null)} />
-        ) : null}
 
         <ExploreProjects projects={projects} />
       </SectionShell>

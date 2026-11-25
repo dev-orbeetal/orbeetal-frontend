@@ -101,7 +101,7 @@ export default function ProjectList() {
             onClick={() => setStage(value)}
             className={`rounded-full px-3 py-1.5 text-xs font-bold ${
               stage === value
-                ? "bg-primary text-white"
+                ? "bg-primary text-on-cta"
                 : "bg-cream text-ink-600 ring-1 ring-line"
             }`}
           >
@@ -123,7 +123,7 @@ export default function ProjectList() {
             onClick={() => setFilter(value)}
             className={`rounded-full px-3 py-1.5 text-xs font-bold ${
               filter === value
-                ? "bg-primary text-white"
+                ? "bg-primary text-on-cta"
                 : "bg-cream text-ink-600 ring-1 ring-line"
             }`}
           >

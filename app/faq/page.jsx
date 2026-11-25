@@ -3,6 +3,12 @@ import PageHero from "@/components/layouts/PageHero";
 import FAQSection from "@/components/faq/FAQSection";
 import React from "react";
 
+export const metadata = {
+  title: "FAQ — Orbeetal",
+  description:
+    "Answers to common questions about working with Orbeetal.",
+};
+
 function FAQPage() {
   return (
     <main>

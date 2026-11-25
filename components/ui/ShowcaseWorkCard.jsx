@@ -34,7 +34,7 @@ function ClampedDescription({ text, onMore }) {
         {text}
       </p>
       {overflows ? (
-        <button type="button" onClick={onMore} className="mt-2 text-sm font-bold text-accent-ink transition-colors hover:text-cyan-ink">
+        <button type="button" onClick={onMore} className="mt-1 inline-flex min-h-11 items-center text-sm font-bold text-cyan-ink transition-colors hover:text-white">
           See more
         </button>
       ) : null}

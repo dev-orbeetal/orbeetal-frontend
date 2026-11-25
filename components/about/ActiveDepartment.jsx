@@ -78,16 +78,16 @@ export default function ActiveDepartment({ department, onClose, showClose = true
           </div>
 
           <div>
-            <h5 className="mb-3 text-lg font-bold text-accent-deep">
-              Key Productions
+            <h5 className="mb-3 text-lg font-bold text-primary">
+              Key Products
             </h5>
             <ul className="space-y-2 text-ink-700">
               {(department.productions || []).map((prod) => (
                 <li
                   key={prod}
-                  className="flex items-center gap-2 rounded-lg bg-accent/10 px-3 py-2 text-sm"
+                  className="flex items-center gap-2 rounded-lg bg-primary/[0.06] px-3 py-2 text-sm"
                 >
-                  <Rocket size={16} className="shrink-0 text-accent-deep" aria-hidden />
+                  <Rocket size={16} className="shrink-0 text-primary" aria-hidden />
                   {prod}
                 </li>
               ))}

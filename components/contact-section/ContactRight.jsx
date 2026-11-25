@@ -166,7 +166,7 @@ export default function ContactRight() {
               className={field}
             />
             {errors.name && (
-              <p id="inquiry-name-error" className="mt-1.5 text-sm text-red-600">
+              <p id="inquiry-name-error" className="mt-1.5 text-sm text-danger-ink">
                 {errors.name}
               </p>
             )}
@@ -190,7 +190,7 @@ export default function ContactRight() {
               className={field}
             />
             {errors.email && (
-              <p id="inquiry-email-error" className="mt-1.5 text-sm text-red-600">
+              <p id="inquiry-email-error" className="mt-1.5 text-sm text-danger-ink">
                 {errors.email}
               </p>
             )}
@@ -225,7 +225,7 @@ export default function ContactRight() {
               </span>
             </div>
             {errors.service && (
-              <p id="inquiry-service-error" className="mt-1.5 text-sm text-red-600">
+              <p id="inquiry-service-error" className="mt-1.5 text-sm text-danger-ink">
                 {errors.service}
               </p>
             )}
@@ -248,7 +248,7 @@ export default function ContactRight() {
               className={`${field} resize-none`}
             />
             {errors.message && (
-              <p id="inquiry-message-error" className="mt-1.5 text-sm text-red-600">
+              <p id="inquiry-message-error" className="mt-1.5 text-sm text-danger-ink">
                 {errors.message}
               </p>
             )}

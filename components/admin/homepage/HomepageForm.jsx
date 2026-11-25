@@ -234,7 +234,7 @@ export default function HomepageForm() {
             onClick={() => setTab(id)}
             className={`rounded-full border px-4 py-2 text-sm font-semibold ${
               tab === id
-                ? "border-primary/30 bg-primary text-white"
+                ? "border-primary/30 bg-primary text-on-cta"
                 : "border-line bg-cream text-ink-600 hover:border-primary/30 hover:text-primary"
             }`}
           >

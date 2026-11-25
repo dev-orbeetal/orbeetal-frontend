@@ -88,6 +88,16 @@ export default function ShowcaseCarousel({
 }) {
   const reduce = useReducedMotion();
   const count = items.length;
+  const [isPhone, setIsPhone] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 767.98px)");
+    const sync = () => setIsPhone(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+  // Full-width cards on phones step one at a time; logo rows keep drifting.
+  const stepped = isPhone && size !== "compact";
   const {
     rootRef,
     progress,
@@ -99,10 +109,11 @@ export default function ShowcaseCarousel({
     goTo,
     onPointerEnter,
     onPointerLeave,
-  } = useShowcaseCarousel({ count, reduceMotion: reduce });
+  } = useShowcaseCarousel({ count, reduceMotion: reduce, stepped });
   const [step, setStep] = useState(360);
   const [trackHeight, setTrackHeight] = useState(0);
   const [reach, setReach] = useState(2);
+  const swipeRef = useRef(null);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -111,7 +122,8 @@ export default function ShowcaseCarousel({
       const slides = [...root.querySelectorAll(".showcase-carousel-slide")];
       if (!slides.length) return;
       const viewportEl = root.querySelector(".showcase-carousel-viewport");
-      if (viewportEl && window.innerWidth < 768) {
+      // Phones show one full-width card at a time; compact rows (logos) keep their size.
+      if (viewportEl && window.innerWidth < 768 && size !== "compact") {
         root.style.setProperty("--showcase-card", `${viewportEl.clientWidth}px`);
       } else {
         root.style.removeProperty("--showcase-card");
@@ -207,6 +219,23 @@ export default function ShowcaseCarousel({
         style={trackHeight ? { minHeight: trackHeight } : undefined}
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}
+        onPointerDown={(event) => {
+          if (count < 2 || event.pointerType === "mouse") return;
+          swipeRef.current = { x: event.clientX, y: event.clientY };
+        }}
+        onPointerUp={(event) => {
+          const start = swipeRef.current;
+          swipeRef.current = null;
+          if (!start) return;
+          const dx = event.clientX - start.x;
+          const dy = event.clientY - start.y;
+          if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+          if (dx < 0) next(true);
+          else prev(true);
+        }}
+        onPointerCancel={() => {
+          swipeRef.current = null;
+        }}
       >
         {slots.map(({ logical, item, key }) => (
           <ShowcaseSlide

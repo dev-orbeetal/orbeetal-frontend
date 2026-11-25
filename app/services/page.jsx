@@ -6,6 +6,12 @@ import WhatWeDo from "@/components/homepage/WhatWeDo";
 import FinalCta from "@/components/homepage/FinalCta";
 import { pageSurface, pageSurfaceToken } from "@/lib/surfaces";
 
+export const metadata = {
+  title: "Services — Orbeetal",
+  description:
+    "Custom software, web and mobile development, UI/UX, AI, cybersecurity and digital marketing services from Orbeetal.",
+};
+
 export default function ServicesPage() {
   return (
     <main>

@@ -22,7 +22,9 @@ function shortestDelta(from, to, count) {
   return diff;
 }
 
-export function useShowcaseCarousel({ count, reduceMotion = false }) {
+// `stepped`: hold each slide, then glide to the next, instead of drifting
+// continuously. Used on phones, where one full-width card fills the view.
+export function useShowcaseCarousel({ count, reduceMotion = false, stepped = false }) {
   const rootRef = useRef(null);
   const progress = useMotionValue(0);
   const [base, setBase] = useState(0);
@@ -153,8 +155,15 @@ export function useShowcaseCarousel({ count, reduceMotion = false }) {
 
   canAutoplayRef.current = canAutoplay;
 
+  useEffect(() => {
+    if (!stepped || !canAutoplay) return undefined;
+    const timer = window.setInterval(() => {
+      if (canAutoplayRef.current) next(false);
+    }, SLIDE_MS);
+    return () => window.clearInterval(timer);
+  }, [stepped, canAutoplay, next]);
   useAnimationFrame((_, delta) => {
-    if (!canAutoplayRef.current) return;
+    if (stepped || !canAutoplayRef.current) return;
     const nextValue = progress.get() + delta * SPEED;
     progress.set(nextValue);
     syncDerived(nextValue);

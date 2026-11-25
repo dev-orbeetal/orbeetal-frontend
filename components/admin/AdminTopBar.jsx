@@ -6,7 +6,6 @@ import { ChevronRight, LogOut, Menu } from "lucide-react";
 import Link from "next/link";
 import { apiSlice } from "@/redux/api/apiSlice";
 import { useLogoutMutation } from "@/redux/features/auth/authApi";
-import ThemeToggle from "@/components/theme/ThemeToggle";
 
 export default function AdminTopBar({ title, crumbs, user, onOpenSidebar }) {
   const router = useRouter();
@@ -63,7 +62,6 @@ export default function AdminTopBar({ title, crumbs, user, onOpenSidebar }) {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <ThemeToggle className="h-10 w-10" />
           <p className="hidden max-w-[10rem] truncate text-sm font-semibold text-ink-600 sm:block">
             {user?.username || "Admin"}
           </p>

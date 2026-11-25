@@ -19,26 +19,20 @@ export default function Footer() {
   const { email, phone, phoneTel, whatsapp } = useSiteBrand();
 
   return (
-    <footer className="charcoal-surface relative overflow-hidden text-white/70">
-      <div className="dot-grid-light pointer-events-none absolute inset-0 opacity-20" />
+    <footer className="charcoal-surface relative overflow-hidden border-t border-line text-ink-500">
+      <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
 
       <SectionShell className="relative z-10 pt-16 md:pt-20">
-        <div className="grid grid-cols-1 items-start gap-10 py-10 500:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-start gap-10 py-10 500:grid-cols-2 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1.05fr)]">
           <div className="text-left">
-            <BrandLogo
-              onDark
-              priority
-              width={160}
-              height={64}
-              className="mb-6"
-            />
-            <p className="text-base leading-relaxed text-white/55">
+            <BrandLogo size={44} className="mb-6" />
+            <p className="text-base leading-relaxed text-ink-500">
               Bold, forward-thinking digital transformation. We engineer precision
               software and design immersive experiences that elevate businesses
               above the competition.
             </p>
 
-            <div className="mt-6 flex space-x-3">
+            <div className="mt-6 flex flex-nowrap items-center gap-3">
               {socialLinks.map(({ icon, href, label }) => (
                 <Link
                   key={label}
@@ -46,11 +40,12 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/80 ring-1 ring-white/15 transition-all duration-300 hover:bg-accent hover:text-[var(--on-cta)] hover:ring-accent"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-ink-700 ring-1 ring-white/15 transition-all duration-300 hover:bg-accent hover:text-on-cta hover:ring-accent hover:shadow-[var(--glow-accent)]"
                 >
                   {icon}
                 </Link>
               ))}
+              <BasisBadge compact />
             </div>
           </div>
 
@@ -119,15 +114,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 py-8">
-          <BasisBadge />
-        </div>
       </SectionShell>
 
-      <div className="relative z-10 border-t border-white/10">
-        <SectionShell className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-6 text-center text-sm text-white/50">
+      <div className="relative z-10 border-t border-line">
+        <SectionShell className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-6 text-center text-sm text-ink-500">
           <span>© {new Date().getFullYear()} Orbeetal. All rights reserved.</span>
-          <span className="inline-flex items-center gap-2">
+          <span className="font-tech inline-flex items-center gap-2 text-xs uppercase">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             All systems nominal
           </span>

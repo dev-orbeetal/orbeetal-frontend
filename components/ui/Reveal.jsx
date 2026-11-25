@@ -27,16 +27,12 @@ export default function Reveal({
 }) {
   const MotionTag = motion[as] ?? motion.div;
   const reduceMotion = useReducedMotion();
-  const variants = VARIANTS[direction] ?? fadeUp;
-
-  if (reduceMotion) {
-    const Tag = as === "div" ? "div" : as;
-    return (
-      <Tag className={className} {...rest}>
-        {children}
-      </Tag>
-    );
-  }
+  // Always render the same motion element. The server can't know the reduced-motion
+  // preference, so swapping in a plain tag made hydration keep the server's
+  // `opacity: 0` style and left the content invisible. Reduced motion now means an
+  // instant, movement-free reveal instead.
+  const variants = reduceMotion ? VARIANTS.none : VARIANTS[direction] ?? fadeUp;
+  const transition = reduceMotion ? { duration: 0 } : { delay, duration, ease: EASE };
 
   return (
     <MotionTag
@@ -45,7 +41,7 @@ export default function Reveal({
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount }}
-      transition={{ delay, duration, ease: EASE }}
+      transition={transition}
       {...rest}
     >
       {children}

@@ -3,6 +3,12 @@ import PageHero from "@/components/layouts/PageHero";
 import PortfolioCatalog from "@/components/portfolio/PortfolioCatalog";
 import { pageSurface, pageSurfaceToken } from "@/lib/surfaces";
 
+export const metadata = {
+  title: "Portfolio — Orbeetal",
+  description:
+    "Products and platforms Orbeetal has designed, engineered and shipped for clients and partners.",
+};
+
 export default function PortfolioPage() {
   return (
     <main>

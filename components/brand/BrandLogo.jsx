@@ -3,11 +3,16 @@
 import Image from "next/image";
 import { useSiteBrand } from "@/lib/useSiteBrand";
 
+export const LOGO_MARK = "/images/logo-mark.svg";
+
+/**
+ * Spiral mark + "Orbeetal" wordmark. `size` is the mark's height in px; the
+ * wordmark scales with it. A logo uploaded in the CMS still takes precedence.
+ */
 export default function BrandLogo({
   className = "",
-  width = 150,
-  height = 60,
-  onDark = false,
+  size = 40,
+  wordmark = true,
   priority = false,
   alt = "Orbeetal",
 }) {
@@ -18,22 +23,37 @@ export default function BrandLogo({
       <Image
         src={logo}
         alt={alt}
-        width={width}
-        height={height}
+        width={Math.round(size * 3.6)}
+        height={size}
         priority={priority}
         className={`object-contain ${className}`}
+        style={{ height: size, width: "auto" }}
       />
     );
   }
 
   return (
-    <Image
-      src="/images/logo-white.svg"
-      alt={alt}
-      width={width}
-      height={height}
-      priority={priority}
-      className={`${onDark ? "logo-on-dark" : "logo-on-light"} ${className}`}
-    />
+    <span
+      className={`brand-logo ${className}`}
+      style={{ "--logo-size": `${size}px` }}
+      role={alt ? "img" : undefined}
+      aria-label={alt || undefined}
+      aria-hidden={alt ? undefined : true}
+    >
+      <Image
+        src={LOGO_MARK}
+        alt=""
+        width={size}
+        height={size}
+        priority={priority}
+        unoptimized
+        className="brand-logo-mark"
+      />
+      {wordmark ? (
+        <span className="brand-logo-word" aria-hidden>
+          Orbeetal
+        </span>
+      ) : null}
+    </span>
   );
 }

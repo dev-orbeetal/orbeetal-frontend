@@ -6,7 +6,6 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { PRIMARY_NAV } from "@/lib/site";
 import BrandLogo from "@/components/brand/BrandLogo";
-import ThemeToggle from "@/components/theme/ThemeToggle";
 import SectionShell from "@/components/layouts/SectionShell";
 
 function isActivePath(pathname, href) {
@@ -62,10 +61,7 @@ export default function Header() {
             className="relative z-10 flex min-h-11 shrink-0 items-center"
             onClick={() => setIsOpen(false)}
           >
-            <BrandLogo
-              priority
-              className="h-8 w-auto object-contain sm:h-9"
-            />
+            <BrandLogo priority size={34} />
           </Link>
 
           <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex" aria-label="Primary">
@@ -76,7 +72,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative px-3 py-2 text-[13.5px] font-semibold tracking-tight transition-colors duration-200 xl:px-3.5 xl:text-sm ${desktopLinkClass(active)}`}
+                  className={`relative inline-flex min-h-11 items-center px-3 text-sm font-semibold tracking-tight transition-colors duration-200 xl:px-3.5 ${desktopLinkClass(active)}`}
                 >
                   {link.label}
                   <span
@@ -90,7 +86,6 @@ export default function Header() {
           </nav>
 
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
-            <ThemeToggle />
             <Link href="/contact" className="btn btn-primary btn-sm">
               Get Started
               <ArrowRight size={15} className="btn-icon" />
@@ -151,7 +146,6 @@ export default function Header() {
                 );
               })}
               <div className="mt-4 flex items-center gap-3">
-                <ThemeToggle />
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <style>
+    .bar{transform-box:fill-box;transform-origin:center bottom;animation:grow 1.8s ease-in-out infinite}
+    .bar-2{animation-delay:.18s}.bar-3{animation-delay:.36s}
+    .lift{animation:bob 1.8s ease-in-out infinite}
+    .coin{animation:bob 2s ease-in-out infinite}
+    @keyframes grow{0%,100%{transform:scaleY(.72)}50%{transform:scaleY(1)}}
+    @keyframes bob{0%,100%{transform:translateY(1px)}50%{transform:translateY(-4px)}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+        <rect x="50" y="72" width="108" height="82" rx="16" fill="#183858" stroke="#67e8f9" stroke-width="2"/>
+  <rect class="bar" x="66" y="112" width="16" height="26" rx="4" fill="#7adcea"/>
+  <rect class="bar bar-2" x="92" y="98" width="16" height="40" rx="4" fill="#20b0e0"/>
+  <rect class="bar bar-3" x="118" y="82" width="16" height="56" rx="4" fill="#4880e8"/>
+  <g class="lift">
+    <path d="M62 118l26-28 24 16 36-40" fill="none" stroke="#f5c14d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M140 60l16 2-10 14z" fill="#f5c14d"/>
+  </g>
+  <g class="coin">
+    <circle cx="58" cy="62" r="15" fill="#f6d27a"/>
+    <text x="58" y="68" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#183858">$</text>
+  </g>
+</svg>

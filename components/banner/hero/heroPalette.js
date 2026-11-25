@@ -1,10 +1,10 @@
 export const HERO = {
-  bg: "#C8E5F1",
-  ink: "#12344D",
-  cyan: "#27BFC7",
-  lime: "#96D83A",
-  line: "#8EC5DC",
-  muted: "#63869A",
-  panel: "#D5EDF5",
-  panelDeep: "#B9DCEA",
+  bg: "#081426",
+  ink: "#E8EEF6",
+  cyan: "#22D3EE",
+  lime: "#A3E635",
+  line: "#1E4660",
+  muted: "#94A3B8",
+  panel: "#112240",
+  panelDeep: "#0C1A2E",
 };

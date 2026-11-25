@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
-import ShowcaseCarousel from "@/components/ui/ShowcaseCarousel";
-import ShowcaseWorkCard, { WorkDialog } from "@/components/ui/ShowcaseWorkCard";
+import DragRail from "@/components/ui/DragRail";
+import FeatureTile from "@/components/ui/FeatureTile";
 import { useGetPublishedProductsQuery } from "@/redux/features/cms/productsApi";
 import SectionShell from "@/components/layouts/SectionShell";
+
+function productImage(product) {
+  return product.imageScreen || product.image || "";
+}
 
 export default function ProductShowcase({ surface = "bg-pale" }) {
   const { data: products = [], isLoading, isError, refetch } =
     useGetPublishedProductsQuery();
-  const [open, setOpen] = useState(null);
-
   return (
     <section className={`section showcase-section ${surface}`}>
       <SectionShell>
@@ -50,39 +50,27 @@ export default function ProductShowcase({ surface = "bg-pale" }) {
         )}
 
         {products.length > 0 && (
-          <ShowcaseCarousel
+          <DragRail
             className="section-stack"
             items={products}
             getKey={(item) => item.id}
             label="company products"
-            renderItem={(product) => (
-              <ShowcaseWorkCard
+            size="feature"
+            autoplay
+            renderItem={(product, index) => (
+              <FeatureTile
+                image={productImage(product)}
                 title={product.title}
+                badge={`${String(index + 1).padStart(2, "0")} / Product`}
                 description={product.description}
-                tags={(product.features || []).slice(0, 3)}
+                features={product.features}
                 href={product.url || "/portfolio"}
                 external={Boolean(product.url)}
-                linkLabel={product.url ? "Open project" : "View portfolio"}
-                topic={product}
-                onMore={() => setOpen({ title: product.title, description: product.description })}
-                image={
-                  product.imageScreen || product.image ? (
-                    <Image
-                      src={product.imageScreen || product.image}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 80vw, 24rem"
-                      className="object-cover"
-                    />
-                  ) : null
-                }
+                priority={index === 0}
               />
             )}
           />
         )}
-        {open ? (
-          <WorkDialog title={open.title} description={open.description} onClose={() => setOpen(null)} />
-        ) : null}
       </SectionShell>
     </section>
   );

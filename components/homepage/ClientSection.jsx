@@ -49,7 +49,7 @@ export default function ClientSection({ surface = "bg-pale" }) {
 
         {clients.length > 0 && (
           <ShowcaseCarousel
-            className="section-stack"
+            className="section-stack client-carousel"
             items={clients}
             getKey={(item) => item.id}
             label="client brands"
@@ -59,28 +59,32 @@ export default function ClientSection({ surface = "bg-pale" }) {
               const Tag = linked ? "a" : "div";
               return (
                 <Tag
-                  className="showcase-carousel-card min-h-[11rem] items-center justify-center gap-3 px-5 pb-5 pt-2"
+                  className="showcase-carousel-card client-logo"
+                  aria-label={client.name}
                   {...(linked
                     ? {
                         href: client.url,
                         target: "_blank",
                         rel: "noopener noreferrer",
-                        title: client.url,
                       }
                     : {})}
                 >
-                  <div className="showcase-media showcase-media--logo">
+                  <span className="client-logo-mark">
                     {client.logo ? (
                       <Image
                         src={client.logo}
                         alt=""
                         fill
-                        sizes="64px"
-                        className="object-contain p-2"
+                        sizes="88px"
+                        className="object-contain p-2.5"
                       />
-                    ) : null}
-                  </div>
-                  <p className="text-center text-sm font-semibold">{client.name}</p>
+                    ) : (
+                      <span aria-hidden>{client.name?.slice(0, 1)}</span>
+                    )}
+                  </span>
+                  <span className="client-logo-name" aria-hidden>
+                    {client.name}
+                  </span>
                 </Tag>
               );
             }}
